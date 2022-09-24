@@ -1,11 +1,11 @@
 import { Container } from '@mui/material';
 
-const Home = () => {
+const Layout = () => {
   return (
     <Container>
-      Scaffolding
+      
     </Container>
   );
-}
+};
 
-export default Home;
+export default Layout;
