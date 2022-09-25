@@ -1,18 +1,21 @@
 import { Stack } from '@mui/material';
+import { FormikProps } from 'formik';
 import { kebabCase } from 'lodash';
 import ChecklistItem from './ChecklistItem';
 
 interface PropTypes {
-  items: string[];
+  config: { name: string; label: string; }[];
+  formik: FormikProps<any>;
 }
 
-const Checklist = ({ items = [] }: PropTypes) => {
+const Checklist = ({ config = [], formik }: PropTypes) => {
   return (
     <Stack>
-      {items.map((item) => (
+      {config.map(({ name, label }) => (
         <ChecklistItem
-          key={kebabCase(item)}
-          label={item}
+          {...formik.getFieldProps(name)}
+          key={name}
+          label={label}
         />
       ))}
     </Stack>
